@@ -46,6 +46,19 @@ npm run build
 npm run preview
 ```
 
+## 自动推送脚本
+
+- `deploy.bat` 是 Windows 一键推送脚本。
+- 双击运行后会先执行 `npm run build`。
+- 构建通过后会自动执行 `git add .`、创建提交，并推送到 `origin/main` 与 `security/main`。
+- 如果需要自定义提交信息，可以在命令行中传入参数，例如：
+
+```bat
+deploy.bat "Update blog content"
+```
+
+- 如果构建失败，脚本会停止，不会推送到 GitHub。
+
 ## 内容维护方式
 
 新增博客文章时，在 `src/content/blog` 下创建 Markdown 或 MDX 文件，并填写：
