@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { withBase } from "../utils/paths";
+import TechTag from "./TechTag.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const date = project.data.date.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit" });
+const demoHref = project.data.demo?.startsWith("/") ? withBase(project.data.demo) : project.data.demo;
+---
+
+<article class="blog-shell group flex h-full flex-col rounded-lg p-5 transition duration-300 hover:-translate-y-1 hover:border-[#146c68]/35">
+  <a href={withBase(`/projects/${project.id}`)} class="flex flex-1 flex-col gap-4">
+    <div class="flex items-center justify-between gap-4 text-xs text-[#6f6a60]">
+      <time datetime={project.data.date.toISOString()}>{date}</time>
+      {project.data.featured && <span class="rounded bg-[#9a5b1f]/10 px-2 py-1 text-[#9a5b1f]">精选</span>}
+    </div>
+    <div>
+      <h2 class="text-xl font-bold text-[#22201c] transition group-hover:text-[#146c68]">{project.data.title}</h2>
+      <p class="mt-3 text-sm leading-7 text-[#5f5a52]">{project.data.description}</p>
+    </div>
+    <div class="mt-auto flex flex-wrap gap-2">
+      {project.data.techStack.map((tech) => <TechTag label={tech} />)}
+    </div>
+  </a>
+  <div class="mt-5 flex gap-4 text-sm">
+    {project.data.github && <a class="quiet-link" href={project.data.github} target="_blank" rel="noreferrer">GitHub</a>}
+    {demoHref && <a class="quiet-link" href={demoHref}>演示</a>}
+  </div>
+</article>

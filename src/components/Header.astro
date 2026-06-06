@@ -1,0 +1,42 @@
+---
+import { withBase } from "../utils/paths";
+
+const navItems = [
+  { href: "/", label: "首页" },
+  { href: "/blog", label: "文章" },
+  { href: "/projects", label: "项目" },
+  { href: "/research", label: "研究" },
+  { href: "/about", label: "关于" },
+  { href: "/resume", label: "简历" },
+  { href: "/contact", label: "联系" },
+];
+
+const currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, "/");
+---
+
+<header class="sticky top-0 z-40 border-b border-[#ded6c9] bg-[#fffdf8]/88 backdrop-blur-xl">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-6 lg:px-8" aria-label="主导航">
+    <a href={withBase("/")} class="group leading-tight">
+      <span class="block text-base font-bold text-[#22201c] transition group-hover:text-[#146c68]">Kong 的技术博客</span>
+      <span class="block text-xs text-[#6f6a60]">大模型学习与工程记录</span>
+    </a>
+    <div class="flex max-w-[calc(100vw-7rem)] gap-1 overflow-x-auto rounded-md border border-[#ded6c9] bg-[#f7f4ef] p-1">
+      {
+        navItems.map((item) => {
+          const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
+          return (
+            <a
+              href={withBase(item.href)}
+              class:list={[
+                "whitespace-nowrap rounded px-3 py-2 text-sm transition",
+                active ? "bg-[#22201c] text-white" : "text-[#6f6a60] hover:bg-white hover:text-[#22201c]",
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </div>
+  </nav>
+</header>

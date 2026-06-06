@@ -1,0 +1,47 @@
+---
+import { withBase } from "../utils/paths";
+---
+
+<section class="grid gap-8 border-b border-[#ded6c9] pb-10 pt-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-end">
+  <div>
+    <p class="mb-4 text-sm font-medium text-[#146c68]">Kong 的学习记录</p>
+    <h1 class="max-w-4xl text-4xl font-black leading-tight text-[#22201c] sm:text-5xl">
+      记录大模型学习、工程实践与论文阅读。
+    </h1>
+    <p class="mt-5 max-w-2xl text-base leading-8 text-[#5f5a52] sm:text-lg">
+      这里是我的个人技术博客。内容会围绕 Transformer、RAG、LoRA、Agent、本地部署和大模型应用开发展开，尽量把每次学习都整理成可复盘的文章。
+    </p>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href={withBase("/blog")} class="rounded-md bg-[#146c68] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0f5653]">
+        查看文章
+      </a>
+      <a href={withBase("/about")} class="rounded-md border border-[#ded6c9] bg-white px-5 py-3 text-sm font-semibold text-[#22201c] transition hover:border-[#146c68]/40">
+        关于 Kong
+      </a>
+    </div>
+  </div>
+  <aside class="space-y-4">
+    <section class="blog-shell rounded-lg p-5">
+      <div class="flex items-center gap-4">
+        <img
+          src={withBase("/images/cat-avatar.png")}
+          alt="Kong 的猫猫头像"
+          class="size-20 rounded-full border border-[#ded6c9] object-cover shadow-sm"
+          loading="eager"
+        />
+        <div>
+          <p class="text-lg font-bold text-[#22201c]">Kong</p>
+          <p class="mt-1 text-sm text-[#6f6a60]">大模型学习与工程记录</p>
+        </div>
+      </div>
+    </section>
+    <section class="blog-shell rounded-lg p-5">
+      <p class="text-sm font-semibold text-[#22201c]">当前关注</p>
+      <div class="mt-4 space-y-3 text-sm leading-7 text-[#5f5a52]">
+        <p><span class="font-semibold text-[#146c68]">学习主线：</span>从模型原理到应用系统</p>
+        <p><span class="font-semibold text-[#9a5b1f]">项目方向：</span>RAG、微调、Agent</p>
+        <p><span class="font-semibold text-[#334e80]">输出方式：</span>文章、项目记录、研究笔记</p>
+      </div>
+    </section>
+  </aside>
+</section>

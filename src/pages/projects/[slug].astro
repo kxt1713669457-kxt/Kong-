@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import TechTag from "../../components/TechTag.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../utils/paths";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const date = project.data.date.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" });
+const demoHref = project.data.demo?.startsWith("/") ? withBase(project.data.demo) : project.data.demo;
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <article class="mx-auto max-w-3xl py-10">
+    <a href={withBase("/projects")} class="quiet-link text-sm">返回项目列表</a>
+    <header class="mt-8 border-b border-[#ded6c9] pb-8">
+      <p class="text-sm text-[#6f6a60]"><time datetime={project.data.date.toISOString()}>{date}</time></p>
+      <h1 class="mt-4 text-4xl font-black leading-tight text-[#22201c]">{project.data.title}</h1>
+      <p class="mt-5 text-lg leading-8 text-[#5f5a52]">{project.data.description}</p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {project.data.techStack.map((tech) => <TechTag label={tech} />)}
+      </div>
+      <div class="mt-8 flex gap-3">
+        {project.data.github && <a class="rounded-md bg-[#146c68] px-4 py-2 text-sm font-semibold text-white" href={project.data.github} target="_blank" rel="noreferrer">GitHub</a>}
+        {demoHref && <a class="rounded-md border border-[#ded6c9] bg-white px-4 py-2 text-sm font-semibold text-[#22201c] transition hover:border-[#146c68]/40" href={demoHref}>查看演示</a>}
+      </div>
+    </header>
+    <div class="prose-llm mt-10">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

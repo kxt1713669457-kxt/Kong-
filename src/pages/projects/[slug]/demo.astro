@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from "astro:content";
+import TechTag from "../../../components/TechTag.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { withBase } from "../../../utils/paths";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const image = project.data.demoImage ? withBase(project.data.demoImage) : undefined;
+---
+
+<BaseLayout title={`${project.data.title} 演示`} description={`${project.data.title} 的概念演示页。`}>
+  <article class="mx-auto max-w-5xl py-10">
+    <a href={withBase(`/projects/${project.id}`)} class="quiet-link text-sm">返回项目详情</a>
+
+    <section class="mt-8 grid gap-8 border-b border-[#ded6c9] pb-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div>
+        <p class="text-sm font-medium text-[#9a5b1f]">概念演示</p>
+        <h1 class="mt-3 text-4xl font-black leading-tight text-[#22201c]">{project.data.title}</h1>
+        <p class="mt-5 text-lg leading-8 text-[#5f5a52]">{project.data.description}</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {project.data.techStack.map((tech) => <TechTag label={tech} />)}
+        </div>
+      </div>
+      {
+        image && (
+          <figure class="blog-shell overflow-hidden rounded-lg p-3">
+            <img src={image} alt={`${project.data.title} 演示预览图`} class="aspect-video w-full rounded-md object-cover" loading="eager" />
+          </figure>
+        )
+      }
+    </section>
+
+    <section class="mt-10 grid gap-4 md:grid-cols-3">
+      {[
+        ["当前状态", "概念演示页，先用于展示方向和内容结构。"],
+        ["后续开发", "继续接入真实数据、接口、评测结果和在线体验。"],
+        ["展示方式", "AI 生成预览图与 Markdown 项目说明，保持静态部署友好。"],
+      ].map(([title, body]) => (
+        <div class="blog-shell rounded-lg p-5">
+          <h2 class="text-lg font-bold text-[#22201c]">{title}</h2>
+          <p class="mt-3 text-sm leading-7 text-[#5f5a52]">{body}</p>
+        </div>
+      ))}
+    </section>
+
+    <section class="prose-llm mt-12">
+      <Content />
+    </section>
+  </article>
+</BaseLayout>
