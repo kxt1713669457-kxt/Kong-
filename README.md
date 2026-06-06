@@ -63,6 +63,8 @@ deploy.bat "Update blog content"
 
 - `.github/workflows/cloudflare-pages.yml` 用于部署到 Cloudflare Pages。
 - 每次推送到 `main` 后，workflow 会执行 `npm ci`、`npm run build`，并将 `dist` 目录部署到 Cloudflare Pages。
+- 当前 Cloudflare Pages 项目名：`kong-blog`
+- 当前 Cloudflare Pages 默认访问域名：`https://kong-blog.pages.dev`
 - workflow 需要在 GitHub 仓库中配置以下 Repository secrets：
   - `CLOUDFLARE_API_TOKEN`
   - `CLOUDFLARE_ACCOUNT_ID`
