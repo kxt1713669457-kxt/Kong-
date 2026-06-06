@@ -59,6 +59,20 @@ deploy.bat "Update blog content"
 
 - 如果构建失败，脚本会停止，不会推送到 GitHub。
 
+## Cloudflare Pages 部署
+
+- `.github/workflows/cloudflare-pages.yml` 用于部署到 Cloudflare Pages。
+- 每次推送到 `main` 后，workflow 会执行 `npm ci`、`npm run build`，并将 `dist` 目录部署到 Cloudflare Pages。
+- workflow 需要在 GitHub 仓库中配置以下 Repository secrets：
+  - `CLOUDFLARE_API_TOKEN`
+  - `CLOUDFLARE_ACCOUNT_ID`
+  - `CLOUDFLARE_PROJECT_NAME`
+- 如果这些 secrets 没有配置完整，workflow 会构建项目但跳过 Cloudflare 部署，避免仓库 Actions 直接失败。
+- Cloudflare Pages 项目建议使用以下配置：
+  - Production branch：`main`
+  - Build command：`npm run build`
+  - Build output directory：`dist`
+
 ## 内容维护方式
 
 新增博客文章时，在 `src/content/blog` 下创建 Markdown 或 MDX 文件，并填写：
