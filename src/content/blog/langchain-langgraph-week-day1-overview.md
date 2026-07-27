@@ -7,13 +7,15 @@ category: "大模型框架"
 draft: false
 ---
 
-![LangChain 与 LangGraph 一周学习路线](/images/langchain-week/week-map.svg)
+![LangChain 模型生态与框架关系图](/images/langchain-week/docx/langchain-02.png)
 
 这一周的学习主线是两件事：先用 LangChain 理解大模型应用开发的常用模块，再用 LangGraph 理解复杂 Agent 为什么需要状态图、检查点和可控流程。LangChain 更像一套大模型应用开发工具箱，覆盖模型调用、提示词模板、输出解析、链式编排、RAG 和工具调用；LangGraph 则更像“执行控制层”，重点解决多节点、多轮状态、人机协同和失败恢复。
 
 从面试角度看，不能只说“LangChain 是一个调用大模型的框架”。更专业的表述应该是：LangChain 把 Prompt、Model、Parser、Retriever、Tool 等能力抽象成可组合组件，使大模型应用从脚本调用升级为可维护的工程流水线。它解决的是“怎么把一次模型调用放进业务流程里”的问题。
 
-![LangChain 核心模块架构](/images/langchain-week/langchain-architecture.svg)
+![LangGraph 流程编排示意图](/images/langchain-week/docx/langgraph-01.png)
+
+结合官方文档的最新表述，可以把三者理解得更清楚：LangChain 偏 Agent 框架和模型、工具、提示词等抽象；LangGraph 偏底层编排运行时，强调 durable execution、streaming、human-in-the-loop 和 persistence；LangSmith 则偏追踪、评测和部署观测。
 
 ## 今日学习重点
 

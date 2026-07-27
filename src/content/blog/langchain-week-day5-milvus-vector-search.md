@@ -7,7 +7,7 @@ category: "大模型框架"
 draft: false
 ---
 
-![Milvus 向量检索系统](/images/langchain-week/milvus-search.svg)
+![Milvus 架构图](/images/langchain-week/docx/langchain-21.png)
 
 今天重点是 Milvus。RAG 需要一个能存储向量、执行相似度搜索、支持元数据过滤并承受一定数据规模的系统，Milvus 就是常见选择之一。
 
@@ -19,9 +19,13 @@ Collection 可以理解为一张向量数据表。Schema 定义每条数据有�
 
 向量字段可以是 dense vector，也可以结合 sparse vector。dense vector 更适合语义相似度，sparse vector 更接近关键词匹配。实际项目常会融合多路召回，再做重排。
 
+![向量召回与混合检索示意图](/images/langchain-week/docx/langchain-25.png)
+
 ## 索引与检索
 
 索引用于加速向量相似度搜索。选择索引时需要权衡召回质量、查询速度、内存占用和构建成本。写入数据后，问答阶段会根据用户问题生成 query embedding，在 Milvus 中做 TopK 搜索，再把召回片段交给后续 Prompt。
+
+Milvus 官方文档里对 schema、index 和 search 的拆分非常明确：先定义 collection schema，再配置 index，最后执行向量搜索和 metadata filtering。这个顺序也适合作为面试回答的主线。
 
 标量检索也很关键。比如用户只想问某篇论文、某个项目或某个时间段的资料，就需要结合元数据过滤，而不是在全库里盲目搜索。
 

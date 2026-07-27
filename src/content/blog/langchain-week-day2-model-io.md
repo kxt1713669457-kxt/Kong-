@@ -7,7 +7,7 @@ category: "大模型框架"
 draft: false
 ---
 
-![Model I/O 与结构化输出流程](/images/langchain-week/model-io-flow.svg)
+![Model I/O 流程图](/images/langchain-week/docx/langchain-04.png)
 
 今天的重点是 Model I/O。它看起来只是“把问题发给模型，再拿到回答”，但在真实项目里，Model I/O 决定了模型调用是否稳定、结果能否被程序消费、不同模型平台能否平滑替换。
 
@@ -19,9 +19,15 @@ draft: false
 
 本地模型部分使用 Ollama。核心流程是安装 Ollama、下载模型、指定模型目录、通过 `ollama run qwen3:8b` 验证，再在 LangChain 中调用本地模型。本地部署的价值不只是省成本，也方便在离线、隐私数据和实验验证场景中快速迭代。
 
+![ChatModel 输入输出关系](/images/langchain-week/docx/langchain-08.png)
+
+![Ollama 下载入口](/images/langchain-week/docx/langchain-09.png)
+
 ## 输出解析
 
 输出解析是今天最需要重视的部分。大模型自然语言回答对人友好，但对程序不稳定。项目中应该尽量把输出约束为 JSON 或 Pydantic schema，并通过 JsonOutputParser、PydanticOutputParser 或模型供应商的结构化输出能力，把结果转成可校验的数据对象。
+
+官方文档也强调 structured output 的价值：应用侧希望拿到 JSON、Pydantic model 或 dataclass 这类可预测结构，而不是再从自然语言里二次猜字段。
 
 提示词里也要明确格式要求，例如字段名、字段类型、是否允许空值、输出语言和错误处理方式。否则看似“回答正确”，实际进入业务系统时可能因为字段缺失、格式不合法而失败。
 

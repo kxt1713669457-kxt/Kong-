@@ -36,7 +36,7 @@
 - `src/utils/paths.ts`：GitHub Pages 子路径适配工具
 - `public/demo`：项目概念演示图
 - `public/images`：站点图片资源，包括个人头像
-- `public/images/langchain-week`：LangChain / LangGraph 一周学习专题配图
+- `public/images/langchain-week/docx`：LangChain / LangGraph 一周学习专题配图，优先使用 Word 笔记中提取的原始图片
 - `.github/workflows/deploy.yml`：GitHub Pages 自动部署流程
 
 ## 开发命令
@@ -107,6 +107,8 @@ featured: true
 当前已使用的专题分类包括：
 
 - `大模型框架`：LangChain、LangGraph、Agent、RAG、Milvus 等框架学习与面试复盘内容。
+
+LangChain / LangGraph 一周专题的文章配图已从用户提供的 Word 笔记中提取。后续若替换专题插图，需要优先保证移动端可读性，避免过宽、文字过密或低对比度的生成图。
 
 ## 设计原则
 

@@ -7,11 +7,13 @@ category: "大模型框架"
 draft: false
 ---
 
-![LangGraph 状态图执行模型](/images/langchain-week/langgraph-state-flow.svg)
+![LangGraph 基础执行图](/images/langchain-week/docx/langgraph-03.png)
 
 今天把学习重点放到 LangGraph。LangGraph 适合处理复杂多步骤 Agent：流程中有共享状态、有条件分支、有循环、有人工审核、有失败恢复，也可能需要追踪每一步历史状态。
 
 如果 LangChain 更像“组件编排工具箱”，LangGraph 就更像“状态化流程引擎”。它通过 StateGraph 定义节点和边，每个节点读取状态、返回状态更新，Reducer 负责合并更新，Checkpoint 负责保存执行过程。
+
+![LangGraph 状态结构示意图](/images/langchain-week/docx/langgraph-05.png)
 
 ## 快速入门流程
 
@@ -25,11 +27,15 @@ Reducer 用于合并节点返回的状态更新。例如多个节点都更新消
 
 Checkpoint 解决多轮上下文和断点续传。调用图时传入 `thread_id`，图执行过程会保存状态。后续可以用同一个 thread_id 继续执行，或者在失败后从断点恢复。这一点是 LangGraph 区别于普通 Chain 的关键能力。
 
+![LangGraph 多状态流程示意图](/images/langchain-week/docx/langgraph-08.png)
+
 ## 节点、边与人机协同
 
 节点是执行单元，可以负责检索、生成、评估、调用工具或人工审核。节点可以配置缓存，避免重复计算；也可以配置重试，提高不稳定工具或模型调用的容错性。
 
 边定义执行方向。普通边表示固定流程，条件边表示根据状态决定下一步，可控制循环则适合“生成 -> 评估 -> 不合格则重试”的场景。人工审核节点适合高风险动作，例如发送消息、提交代码或调用外部系统前先等待确认。
+
+官方 LangGraph 文档把它定位为 orchestration runtime，强调 durable execution、human-in-the-loop 和 persistence。换句话说，LangGraph 真正解决的是复杂流程在生产环境中如何暂停、恢复、审计和继续执行。
 
 ## 面试八股问答
 

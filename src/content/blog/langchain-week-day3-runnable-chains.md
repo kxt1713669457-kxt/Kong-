@@ -7,11 +7,13 @@ category: "大模型框架"
 draft: false
 ---
 
-![Runnable 链式编排](/images/langchain-week/runnable-chain.svg)
+![Runnable 组合流程示意图](/images/langchain-week/docx/langchain-14.png)
 
 今天学习 Chains。单次模型调用只能解决一个局部问题，但真实业务往往需要“输入清洗 -> 检索上下文 -> 组装提示词 -> 模型生成 -> 输出解析 -> 结果评测”。Chains 的作用就是把这些步骤组织成稳定流程。
 
 LangChain 新版本中更推荐围绕 Runnable 来理解链式编排。`RunnableSequence` 用于顺序执行，前一步输出会进入下一步；`RunnableParallel` 用于并行执行，比如同时检索知识库、查询历史记录、生成用户画像摘要，再把结果合并给下游 Prompt。
+
+![chunk 切分与 overlap 示意图](/images/langchain-week/docx/langchain-17.png)
 
 ## Runnable 的工程价值
 

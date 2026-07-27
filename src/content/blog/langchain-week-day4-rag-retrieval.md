@@ -7,7 +7,7 @@ category: "大模型框架"
 draft: false
 ---
 
-![RAG 检索增强生成流程](/images/langchain-week/rag-pipeline.svg)
+![RAG 流程图](/images/langchain-week/docx/langchain-18.png)
 
 今天进入 Retrieval / RAG。RAG 的出发点很清楚：大模型参数中没有最新知识，也不一定包含企业私有知识，并且在缺少依据时容易产生幻觉。RAG 通过检索外部文档，把相关内容放进上下文，再让模型基于资料回答。
 
@@ -19,9 +19,13 @@ draft: false
 
 常用策略是 RecursiveCharacterTextSplitter，通过段落、句子、字符等层级递归切分，并设置 chunk size 与 overlap。Overlap 的意义是减少边界信息丢失，让相邻片段之间保留必要上下文。
 
+![Document Embedding 示意图](/images/langchain-week/docx/langchain-20.png)
+
 ## Embedding 与检索
 
 Embedding 的作用是把文本转成向量，使语义相近的文本在向量空间中距离更近。用户问题也会被转成向量，再和文档向量做相似度搜索。检索不一定只看向量相似度，还可以结合关键词、元数据过滤、时间范围和重排序。
+
+参考 LangChain 官方 RAG 资料，检索增强的关键并不只是“把文档塞给模型”，而是按语料规模、延迟要求和答案可信度要求设计不同的检索、压缩、引用和评测流程。
 
 实际项目里，RAG 的难点不是“能不能召回”，而是“召回内容是否真的能支撑答案”。因此需要做评测，比如命中率、引用准确性、答案忠实度和用户问题覆盖率。
 

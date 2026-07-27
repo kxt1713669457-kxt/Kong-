@@ -7,7 +7,7 @@ category: "大模型框架"
 draft: false
 ---
 
-![Agent 与 MCP 工具调用流程](/images/langchain-week/agent-mcp-flow.svg)
+![Agent 推理与动作循环](/images/langchain-week/docx/langchain-29.png)
 
 今天学习 Agent。普通问答系统只负责生成文本，Agent 则让模型具备“判断任务、选择工具、执行动作、观察结果、继续推理”的能力。它更接近大模型应用从问答走向自动化执行的关键环节。
 
@@ -19,9 +19,13 @@ draft: false
 
 使用 OpenAI SDK 时，需要定义工具 schema；使用 LangChain 时，可以把函数封装为 Tool，再交给 Agent。无论哪种方式，工具边界都要明确：能做什么、不能做什么、输入是什么、输出是什么、失败如何处理。
 
+![Agent 输入、模型、工具与输出关系](/images/langchain-week/docx/langchain-31.png)
+
 ## MCP 的意义
 
 MCP 可以理解为模型应用和外部工具之间的标准连接协议。它把工具、资源和上下文通过统一协议暴露给模型应用，减少每个工具都单独写适配层的成本。
+
+![MCP Client-Server 架构图](/images/langchain-week/docx/langchain-34.png)
 
 从工作流程看，通常包括能力声明、上下文注入、模型推理、工具选择、工具调用、结果返回和最终答案生成。面试时可以强调：MCP 的价值在于标准化工具接入和上下文交换，而不是单纯多了一个插件系统。
 
