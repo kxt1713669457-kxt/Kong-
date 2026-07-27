@@ -8,6 +8,7 @@ export const categorySlugMap: Record<string, string> = {
   模型原理: "model-principles",
   论文阅读: "paper-reading",
   学习路线: "learning-roadmap",
+  大模型框架: "llm-frameworks",
 };
 
 export function getCategorySlug(category: string): string {

@@ -36,6 +36,7 @@
 - `src/utils/paths.ts`：GitHub Pages 子路径适配工具
 - `public/demo`：项目概念演示图
 - `public/images`：站点图片资源，包括个人头像
+- `public/images/langchain-week`：LangChain / LangGraph 一周学习专题配图
 - `.github/workflows/deploy.yml`：GitHub Pages 自动部署流程
 
 ## 开发命令
@@ -102,6 +103,10 @@ featured: true
 ```
 
 新增文章分类时，需要同步更新 `src/utils/categories.ts` 中的分类映射，确保首页、文章页和分类页都能正确跳转。
+
+当前已使用的专题分类包括：
+
+- `大模型框架`：LangChain、LangGraph、Agent、RAG、Milvus 等框架学习与面试复盘内容。
 
 ## 设计原则
 

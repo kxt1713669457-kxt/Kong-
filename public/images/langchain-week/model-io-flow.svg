@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">Model I/O 与结构化输出流程</title>
+  <desc id="desc">从输入变量、提示词模板、模型调用到输出解析的 Model I/O 流程。</desc>
+  <defs><style>.h{font:700 28px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#202820}.p{font:400 15px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#607066}.box{fill:#fff;stroke:#d9e0d8;stroke-width:2}.t{font:700 18px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#0f766e}.s{font:400 13px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#5e6b62}</style></defs>
+  <rect width="980" height="420" rx="28" fill="#fbfaf6"/>
+  <text x="58" y="66" class="h">Model I/O：从提示词到可靠输出</text>
+  <text x="58" y="96" class="p">工程重点不是“能调用模型”，而是让输入、模型选择、解析结果都可控、可替换、可测试。</text>
+  <g transform="translate(70 165)">
+    <rect class="box" width="150" height="100" rx="16"/><text x="38" y="43" class="t">输入变量</text><text x="33" y="72" class="s">用户问题 / 上下文</text>
+    <rect class="box" x="210" width="150" height="100" rx="16"/><text x="243" y="43" class="t">Prompt</text><text x="237" y="72" class="s">角色、约束、格式</text>
+    <rect class="box" x="420" width="150" height="100" rx="16"/><text x="454" y="43" class="t">ChatModel</text><text x="451" y="72" class="s">云端或 Ollama</text>
+    <rect class="box" x="630" width="150" height="100" rx="16"/><text x="662" y="43" class="t">Parser</text><text x="650" y="72" class="s">Pydantic / JSON</text>
+    <rect class="box" x="420" y="140" width="360" height="76" rx="16"/><text x="464" y="188" class="t">业务对象：可渲染、可入库、可评测</text>
+  </g>
+  <path d="M220 215h60M430 215h60M640 215h60M775 265c0 54-88 61-150 61" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+</svg>

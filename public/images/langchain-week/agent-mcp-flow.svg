@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">Agent 与 MCP 工具调用流程</title>
+  <desc id="desc">用户请求进入 Agent，模型决定是否调用本地工具或 MCP 工具，再把结果汇总成答案。</desc>
+  <defs><style>.h{font:700 28px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#2b201b}.p{font:400 15px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#6d625d}.box{fill:#fff;stroke:#e2d7d0;stroke-width:2}.t{font:700 17px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#7c2d12}.s{font:400 13px Inter,Arial,"Microsoft YaHei",sans-serif;fill:#685d57}</style></defs>
+  <rect width="980" height="420" rx="28" fill="#fff8f3"/>
+  <text x="58" y="66" class="h">Agent：让模型从回答者变成执行者</text>
+  <text x="58" y="96" class="p">关键不是“会调用工具”，而是工具 schema、权限边界、失败重试和执行反馈闭环。</text>
+  <g transform="translate(75 155)">
+    <rect class="box" width="130" height="80" rx="16"/><text x="48" y="45" class="t">用户</text>
+    <rect class="box" x="175" width="150" height="80" rx="16"/><text x="218" y="35" class="t">Agent</text><text x="199" y="60" class="s">规划 / 记忆 / 反思</text>
+    <rect class="box" x="375" width="150" height="80" rx="16"/><text x="421" y="35" class="t">LLM</text><text x="397" y="60" class="s">判断工具调用</text>
+    <rect class="box" x="575" y="-55" width="160" height="78" rx="16"/><text x="615" y="-20" class="t">本地工具</text><text x="615" y="4" class="s">函数 / API</text>
+    <rect class="box" x="575" y="92" width="160" height="78" rx="16"/><text x="620" y="126" class="t">MCP</text><text x="604" y="150" class="s">Client / Server</text>
+    <rect class="box" x="780" y="18" width="130" height="80" rx="16"/><text x="826" y="63" class="t">答案</text>
+  </g>
+  <path d="M205 195h45M325 195h50M525 190c58-12 70-64 125-74M525 215c58 12 70 70 125 78M735 171c45 4 55 12 120 42" fill="none" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/>
+</svg>
