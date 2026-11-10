@@ -37,6 +37,7 @@
 - `public/demo`：项目概念演示图
 - `public/images`：站点图片资源，包括个人头像
 - `public/images/langchain-week/docx`：LangChain / LangGraph 一周学习专题配图，优先使用 Word 笔记中提取的原始图片
+- `public/images/eeg-learning`：EEG 智库 Agent 系列的原创流程示意图；文章和配图使用相对路径兼容子路径部署。
 - `.github/workflows/deploy.yml`：GitHub Pages 自动部署流程
 
 ## 开发命令
@@ -103,6 +104,8 @@ featured: true
 ```
 
 新增文章分类时，需要同步更新 `src/utils/categories.ts` 中的分类映射，确保首页、文章页和分类页都能正确跳转。
+
+EEG 智库 Agent 系列为事后整理的学习回顾，文章归档日期用于排序；实际工程及学习时间以文中说明为准。
 
 当前已使用的专题分类包括：
 
