@@ -34,3 +34,5 @@ draft: false
 系列导航：[请求与架构](../eeg-learning-02-request/) · [文档入库](../eeg-learning-03-ingestion/) · [切块与向量](../eeg-learning-04-chunking/) · [检索与重排](../eeg-learning-05-retrieval/) · [证据与引用](../eeg-learning-06-evidence/) · [Agent 工具](../eeg-learning-07-agent/) · [脑电模型](../eeg-learning-08-model/) · [工作台与复盘](../eeg-learning-09-workbench/)
 
 参考：[LangGraph：Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)。
+
+项目后续进展：[EEG 智库 Agent 项目详情](../../projects/eeg-knowledge-agent/) · [研究记录](../../research/)。项目详情补充了 11 月的工作台和模型接入情况。

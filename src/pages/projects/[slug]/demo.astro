@@ -6,7 +6,7 @@ import { withBase } from "../../../utils/paths";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map((project) => ({
+  return projects.filter((project) => project.data.demo === `/projects/${project.id}/demo`).map((project) => ({
     params: { slug: project.id },
     props: { project },
   }));

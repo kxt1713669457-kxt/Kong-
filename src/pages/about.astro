@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../utils/paths";
 ---
 
 <BaseLayout title="关于" description="关于 Kong 的技术方向、学习路径与研究兴趣。">
@@ -15,6 +16,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p class="mt-5 leading-8">
         这个博客会持续记录学习笔记、论文阅读、实验复盘和项目实现过程。目标不是堆概念，而是把每个技术点整理成能复现、能验证、能继续扩展的知识资产。
       </p>
+      <p class="mt-5 leading-8">近期围绕 EEG 运动想象研究学习文献检索、受控 Agent 和模型工具，相关过程整理在 <a class="quiet-link" href={withBase("/projects/eeg-knowledge-agent/")}>EEG 智库 Agent 项目</a>与 <a class="quiet-link" href={withBase("/research/")}>研究记录</a>中。</p>
     </div>
   </section>
 

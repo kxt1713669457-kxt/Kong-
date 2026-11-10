@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../utils/paths";
 ---
 
 <BaseLayout title="简历" description="Kong 的个人简历、技能栈与项目经历。">
@@ -13,7 +14,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <aside class="blog-shell rounded-lg p-5">
       <h2 class="text-lg font-bold text-[#22201c]">技能栈</h2>
       <div class="mt-4 flex flex-wrap gap-2 text-sm text-[#5f5a52]">
-        {["Python", "PyTorch", "Transformers", "LangChain", "Vector DB", "Astro", "TypeScript"].map((skill) => (
+        {["Python", "FastAPI", "PyTorch", "LangGraph", "RAG", "Milvus", "MongoDB", "MinIO"].map((skill) => (
           <span class="rounded-md border border-[#ded6c9] bg-white px-3 py-1">{skill}</span>
         ))}
       </div>
@@ -24,6 +25,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div>
           <p class="font-semibold text-[#22201c]">大模型开发方向</p>
           <p class="mt-2 text-sm leading-7">关注大模型应用开发、RAG 系统、Agent 工具调用、参数高效微调与模型部署。</p>
+        </div>
+        <div>
+          <p class="font-semibold text-[#22201c]"><a class="quiet-link" href={withBase("/projects/eeg-knowledge-agent/")}>EEG 智库 Agent 项目记录 →</a></p>
+          <p class="mt-2 text-sm leading-7">在既有框架和带教协助下学习 RAG 资料处理、来源追溯、Agent 工具编排和 EEG 模型接入，持续复盘实现与验证边界。</p>
         </div>
         <div>
           <p class="font-semibold text-[#22201c]">项目方向</p>

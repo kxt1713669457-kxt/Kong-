@@ -28,3 +28,5 @@ LLM 负责提出受控计划和解释真实产物；后端校验样本、模型�
 第一次计算后保存产物身份，后续询问可以读取既有结果；这样可以区分“解释已保存结果”和“重新运行模型”。如果任务失败或结果缺失，应明确反馈，而不是用通用知识补造数值。
 
 参考：[CBraMod 作者开源仓库](https://github.com/wjq-learning/CBraMod)；[CBraMod 论文](https://arxiv.org/abs/2412.07236)。
+
+> 后续更新：11 月项目另外接入了 DWDaNet 和 DWTNet 本地 2a 分类 Skill。它们与本文所述的 CBraMod 表征能力不同，输入契约和限制见[项目详情](../../projects/eeg-knowledge-agent/)。
